@@ -1,6 +1,5 @@
 package com.spring.mvc.entidades;
 
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,25 +17,17 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name="clientes")
+@Table(name="categorias")
 @Data @AllArgsConstructor @NoArgsConstructor
-public class Cliente {
+public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private Long id;
-	private String nombre;
-	private String cif;
-	private Integer telefono;
-	private Integer codigoPostal;
+	private String nombre, descripcion;
 	
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	@OneToMany(mappedBy="cliente")
-	private final Set<Factura> facturas = new HashSet<Factura>();
-	//@DateTimeFormat(iso = ISO.DATE)
-	//private LocalDate fechaNacimiento;
-	
-	//spring.jpa.hibernate.ddl-auto=update
-}
+	@OneToMany(mappedBy = "categoria") //, fetch= FetchType.LAZY) Nombre del campo de @ManyToOne de la clase Producto
+	private final Set<Producto> productos = new HashSet<Producto>();
 
+}

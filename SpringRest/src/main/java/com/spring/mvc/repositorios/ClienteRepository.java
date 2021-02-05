@@ -10,9 +10,9 @@ import com.spring.mvc.entidades.Cliente;
 // Extiende de repositorio que permite paginacion y ordenacion
 public interface ClienteRepository extends PagingAndSortingRepository<Cliente, Long> {
 
-	List<Cliente> findByApellidos(String apellidos);
+	List<Cliente> findByNombre(String nombre);
 
-	@Query("select c.id from Cliente c where c.nombre = :nombre and c.apellidos = :apellidos")
-	Long findIdByNombreApellidos(String nombre, String apellidos);
+	//@Query("select c.id from Cliente c where c.nombre = :nombre and c.codigoPostal = :codigo_postal")
+	//Long findIdByNombreCodigoPostal(String nombre, int codigoPostal);
 
 }
